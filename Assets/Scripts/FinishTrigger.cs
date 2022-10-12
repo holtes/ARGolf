@@ -8,7 +8,6 @@ public class FinishTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Finish!");
             App.GetInstance().controller.finishGame();
         }
     }

@@ -20,7 +20,6 @@ public class ParticleController : MonoBehaviour
     public IEnumerator stopParticleSystem()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("Fire!");
         fireworks.transform.GetComponent<ParticleSystem>().startSize = 0;
         fireworks.SetActive(false);
     } 

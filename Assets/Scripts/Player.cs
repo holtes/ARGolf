@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     private Vector3 startRotatorPosition;
     public GameObject rotatorPref;
     private GameObject rotator;
-    private GameObject _newPivot;
     private Rigidbody _rb;
     void Start()
     {
@@ -20,7 +19,6 @@ public class Player : MonoBehaviour
         rotator.transform.position = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         rotator.transform.position = transform.position;
@@ -31,11 +29,6 @@ public class Player : MonoBehaviour
                 _startMousePosition = Input.mousePosition;
                 startRotatorPosition = rotator.transform.localEulerAngles;
             }
-            //if (Input.GetMouseButtonUp(0))
-            //{
-            //    transform.SetParent(transform.parent.parent);
-            //    Destroy(_newPivot);
-            //}
             if (Input.GetMouseButton(0))
             {
                 Vector3 newPosition = Input.mousePosition - _startMousePosition;
@@ -48,11 +41,6 @@ public class Player : MonoBehaviour
             {
                 _startMousePosition = Input.mousePosition;
             }
-            //if (Input.touches[0].phase == TouchPhase.Ended)
-            //{
-            //    transform.SetParent(transform.parent.parent);
-            //    Destroy(_newPivot);
-            //}
             if (Input.touches[0].phase == TouchPhase.Moved)
             {
                 Vector3 newPosition = Input.mousePosition - _startMousePosition;
@@ -63,10 +51,7 @@ public class Player : MonoBehaviour
 
     public void MovementLogic(float Speed)
     {
-        Debug.Log("Move!");
-        Debug.Log(Speed);
-        Vector3 movement = rotator.transform.GetChild(1).transform.right;
-        Debug.Log(movement);
+        Vector3 movement = rotator.transform.GetChild(0).transform.right;
         _rb.AddForce(movement * Speed);
     }
 
